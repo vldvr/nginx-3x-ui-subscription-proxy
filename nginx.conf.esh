@@ -34,6 +34,12 @@ http {
             content_by_lua_file /etc/nginx/lua/config_fetcher.lua;
         }
 
+        location = /qrcode.min.js {
+            alias /etc/nginx/lua/qrcode.min.js;
+            add_header Content-Type application/javascript;
+            expires 30d;
+        }
+
         # Заглушка для других запросов
         location / {
             return 404;

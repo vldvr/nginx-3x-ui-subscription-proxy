@@ -27,6 +27,7 @@ RUN luarocks install lua-resty-http
 
 # Копируем конфигурацию Lua
 COPY config_fetcher.lua /etc/nginx/lua/
+COPY qrcode.min.js /etc/nginx/lua/
 
 # Устанавливаем права на файлы
 RUN chmod -R 755 /usr/local/openresty/nginx/conf/

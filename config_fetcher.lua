@@ -305,7 +305,7 @@ ul.links button:hover{border-color:#3b82f6;color:#3b82f6}
        background:#22c55e;color:#fff;padding:10px 22px;border-radius:8px;
        font-size:.88rem;display:none;pointer-events:none}
 </style>
-<script src="https://unpkg.com/qrcode@1.5.3/build/qrcode.min.js"></script>
+<script src="/qrcode.min.js"></script>
 </head><body>
 <h1>Подписка &nbsp;·&nbsp; %s</h1>
 <div class="card">
@@ -315,7 +315,7 @@ ul.links button:hover{border-color:#3b82f6;color:#3b82f6}
     <div class="stat"><div class="stat-label">↑ Отдача</div><div class="stat-value">%s</div></div>
     <div class="stat"><div class="stat-label">Истекает</div><div class="stat-value expire">%s</div></div>
   </div>
-  <div class="qr-wrap"><canvas id="qr"></canvas></div>
+  <div class="qr-wrap"><div id="qr"></div></div>
   <div class="url-box">%s</div>
   <button class="btn btn-copy" onclick="copyMain()">📋 Скопировать ссылку подписки</button>
   <details><summary>Конфиги (%d шт.)</summary>
@@ -325,8 +325,7 @@ ul.links button:hover{border-color:#3b82f6;color:#3b82f6}
 <div class="toast" id="toast">Скопировано!</div>
 <script>
 const SUB='%s';
-QRCode.toCanvas(document.getElementById('qr'),SUB,
-  {width:180,margin:1,color:{dark:'#000',light:'#fff'}});
+new QRCode(document.getElementById('qr'),{text:SUB,width:180,height:180,colorDark:'#000000',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});
 function copyMain(){copy(SUB)}
 function copy(t){
   navigator.clipboard?navigator.clipboard.writeText(t):
