@@ -1,5 +1,9 @@
 worker_processes 1;
 env SERVERS;
+env SITE_HOST;
+env SITE_PORT;
+env TLS_MODE;
+env SITE_URL;
 events {
     worker_connections 1024;
 }
